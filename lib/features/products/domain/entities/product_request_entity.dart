@@ -1,15 +1,16 @@
-class ProductRequestEntity {
+class ProductResponseEntity {
   final int id;
   final String title;
   final double price;
   final String description;
   final String category;
   final String image;
-  ProductRequestEntity(
-      {required this.id,
-      required this.title,
-      required this.price,
-      required this.description,
-      required this.category,
-      required this.image});
+  ProductResponseEntity({
+    required this.id,
+    required this.title,
+    required this.price,
+    required this.description,
+    required this.category,
+    required this.image,
+  });
 }
