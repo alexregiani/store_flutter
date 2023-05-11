@@ -1,4 +1,4 @@
-import '../entities/product_request_entity.dart';
+import '../entities/product_response_entity.dart';
 
 abstract class ProductRequestRepositoryRemote {
   Future<List<ProductResponseEntity>> productRequest();}

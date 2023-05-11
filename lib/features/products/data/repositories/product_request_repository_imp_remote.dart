@@ -1,5 +1,5 @@
 import 'package:store_flutter/features/products/data/datasources/product_remote_data_source.dart';
-import 'package:store_flutter/features/products/domain/entities/product_request_entity.dart';
+import 'package:store_flutter/features/products/domain/entities/product_response_entity.dart';
 
 import '../../domain/repositories/product_request_repository_remote.dart';
 

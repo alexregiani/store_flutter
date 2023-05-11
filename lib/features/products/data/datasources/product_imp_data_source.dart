@@ -5,16 +5,11 @@ import 'package:store_flutter/features/products/data/models/product_response_mod
 class ProductImpDataSource implements ProductRemoteDataSource {
   final Dio _dio = Dio();
   @override
-  Future<List<ProductResponseModel>> getProducts() async{
+  Future<List<ProductResponseModel>> getProducts() async {
     final response = await _dio.get('https://fakestoreapi.com/products');
     final List<dynamic> data = response.data;
-    return data.map((product) => ProductResponseModel(
-      id: product['id'],
-      title: product['title'],
-      price: product['price'].toDouble(),
-      description: product['description'],
-      category: product['category'],
-      image: product['image'],
-    )).toList();
+    return data
+        .map((product) => ProductResponseModel.fromJson(product))
+        .toList();
   }
 }
