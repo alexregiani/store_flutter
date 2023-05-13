@@ -19,7 +19,6 @@ class _MyAppState extends State<MyApp> {
     final dataSource = ProductImpDataSource();
     final products = await dataSource.getProducts();
     print(products);
-
   }
 
   @override

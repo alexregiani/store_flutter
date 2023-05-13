@@ -8,8 +8,6 @@ class ProductImpDataSource implements ProductRemoteDataSource {
   Future<List<ProductResponseModel>> getProducts() async {
     final response = await _dio.get('https://fakestoreapi.com/products');
     final List<dynamic> data = response.data;
-    return data
-        .map((product) => ProductResponseModel.fromJson(product))
-        .toList();
+    return data.map((product) => ProductResponseModel.fromJson(product)).toList();
   }
 }

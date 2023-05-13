@@ -23,9 +23,6 @@ class ProductResponseModel extends ProductResponseEntity {
           image: image,
         );
   @override
-  String toString() {
-    return 'ProductResponseModel{id: $id, title: $title, price: $price, description: $description, category: $category, image: $image}';
-  }
 
   factory ProductResponseModel.fromJson(Map<String, dynamic> json) {
     return ProductResponseModel(
@@ -37,4 +34,8 @@ class ProductResponseModel extends ProductResponseEntity {
       image: json['image'],
     );
   }
+  String toString() {
+    return 'ProductResponseModel{id: $id, title: $title, price: $price, description: $description, category: $category, image: $image}';
+  }
+
 }
