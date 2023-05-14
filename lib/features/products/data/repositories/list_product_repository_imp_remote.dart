@@ -11,18 +11,6 @@ class ListProductRepositoryImpRemote implements ListProductRepositoryRemote {
   @override
   Future<List<ProductResponseEntity>> productRequest() async {
     var response = await productRemoteDataSource.getProducts();
-    var list = response
-        .map(
-          (item) => ProductResponseEntity(
-            id: item.id,
-            title: item.title,
-            price: item.price,
-            description: item.description,
-            category: item.category,
-            image: item.image,
-          ),
-        )
-        .toList();
-    return list;
+    return response;
   }
 }

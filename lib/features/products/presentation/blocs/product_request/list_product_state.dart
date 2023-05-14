@@ -5,6 +5,12 @@ class ListProductState extends Equatable {
   final List<ProductResponseEntity> products;
 
   @override
-  // implement props
   List<Object?> get props => throw UnimplementedError();
+}
+
+class ListProductInitial extends ListProductState {
+  const ListProductInitial({required super.products});
+
+  @override
+  List<Object> get props => [];
 }

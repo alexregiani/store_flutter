@@ -12,7 +12,6 @@ class ListProductBloc extends Bloc<ListProductEvent, ListProductState> {
   final ListProductUseCase productRequestUseCase;
   ListProductBloc({required this.productRequestUseCase}) : super(ListProductState(products: [])) {
     on<ListProductEvent>((event, emit) {
-      // implement event handler
     });
   }
 }
