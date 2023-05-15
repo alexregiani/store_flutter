@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -13,6 +12,7 @@ class ListProductBloc extends Bloc<ListProductEvent, ListProductState> {
 
   ListProductBloc({required this.listProductUseCase}) : super(ListProductInitial()) {
     on<FetchProductEvent>((event, emit) async {
+      print('FetchProductEvent triggered');
       try {
         emit(ListProductLoading()); // Indicate that loading has started
         final products = await listProductUseCase.call();

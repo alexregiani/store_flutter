@@ -16,7 +16,10 @@ class ListProductLoading extends ListProductState {
 
 class ListProductSuccess extends ListProductState {
   final List<ProductResponseEntity> products;
-  const ListProductSuccess({required this.products});
+
+  ListProductSuccess({required this.products}) {
+    print('ListProductSuccess with ${products.length} products');
+  }
 
   @override
   List<Object> get props => [products];
