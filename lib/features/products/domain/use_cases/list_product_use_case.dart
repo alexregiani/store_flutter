@@ -2,12 +2,12 @@ import 'package:store_flutter/features/products/domain/entities/product_response
 import 'package:store_flutter/features/products/domain/repositories/list_product_repository_remote.dart';
 
 class ListProductUseCase {
-  final ListProductRepositoryRemote listProductRequestRepositoryRemote;
+  final ListProductRepositoryRemote listProductRepositoryRemote;
 
-  ListProductUseCase({required this.listProductRequestRepositoryRemote});
+  ListProductUseCase({required this.listProductRepositoryRemote});
 
   Future<List<ProductResponseEntity>> call() async {
-    final productRequest = await listProductRequestRepositoryRemote.productRequest();
+    final productRequest = await listProductRepositoryRemote.productRequest();
     return productRequest;
   }
 }
