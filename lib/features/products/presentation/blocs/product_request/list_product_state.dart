@@ -4,29 +4,32 @@ abstract class ListProductState extends Equatable {
   const ListProductState();
 }
 
-class ListProductInitial extends ListProductState {
+class ListProductInitialState extends ListProductState {
   @override
   List<Object> get props => [];
 }
 
-class ListProductLoading extends ListProductState {
+class ListProductLoadingState extends ListProductState {
   @override
   List<Object> get props => [];
 }
 
-class ListProductSuccess extends ListProductState {
+class ListProductSuccessState extends ListProductState {
   final List<ProductResponseEntity> products;
 
-  ListProductSuccess({required this.products}) {
+  ListProductSuccessState({required this.products}) {
     print('ListProductSuccess with ${products.length} products');
   }
 
   @override
   List<Object> get props => [products];
 }
-class ListProductError extends ListProductState {
+class ListProductErrorState extends ListProductState {
+  final String errorMessage;
+  const ListProductErrorState({required this.errorMessage});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [errorMessage];
 }
 
 

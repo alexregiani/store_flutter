@@ -10,15 +10,18 @@ part 'list_product_state.dart';
 class ListProductBloc extends Bloc<ListProductEvent, ListProductState> {
   final ListProductUseCase listProductUseCase;
 
-  ListProductBloc({required this.listProductUseCase}) : super(ListProductInitial()) {
+  ListProductBloc({required this.listProductUseCase}) : super(ListProductInitialState()) {
     on<FetchProductEvent>((event, emit) async {
       print('FetchProductEvent triggered');
       try {
-        emit(ListProductLoading()); // Indicate that loading has started
+        emit(ListProductLoadingState()); // Indicate that loading has started
         final products = await listProductUseCase.call();
-        emit(ListProductSuccess(products: products)); // Emit the loaded state with the fetched products
+        emit(ListProductSuccessState(products: products)); // Emit the loaded state with the fetched products
       } catch (e) {
-        emit(ListProductError()); // Emit an error state in case of failure
+        print('Error occurred: $e');
+        emit(
+          const ListProductErrorState(errorMessage: 'failed to fetch products'),
+        ); // Emit an error state in case of failure
       }
     });
   }
