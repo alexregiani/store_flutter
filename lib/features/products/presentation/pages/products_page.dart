@@ -12,13 +12,35 @@ class ProductsPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          TextButton(
-            onPressed: () {
-              BlocProvider.of<ListProductBloc>(context).add(const FetchProductEvent());
-            },
-            child: Text('press to get products'),
+          Flexible(
+            flex: 1,
+            child: TextButton(
+              onPressed: () {
+                BlocProvider.of<ListProductBloc>(context).add(const FetchProductEvent());
+              },
+              child: Text('press to get products'),
+            ),
           ),
-          ProductCard(),
+          Flexible(
+            flex: 1,
+            child: Center(
+              child: BlocBuilder<ListProductBloc, ListProductState>(
+                builder: (context, state) {
+                  if (state is ListProductLoadingState) {
+                    return CircularProgressIndicator();
+                  } else if (state is ListProductSuccessState) {
+                    return ListView.builder(scrollDirection: Axis.horizontal,
+                        itemCount: state.products.length,
+                        itemBuilder: (context, index) {
+                          return ProductCard(product: state.products[index]);
+                        });
+                  } else {
+                    return Text('error');
+                  }
+                },
+              ),
+            ),
+          ),
         ]),
       ),
     );

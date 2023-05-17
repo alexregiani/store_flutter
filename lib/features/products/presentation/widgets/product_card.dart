@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:store_flutter/features/products/domain/entities/product_response_entity.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({Key? key}) : super(key: key);
+  ProductCard({Key? key, required this.product}) : super(key: key);
+  final ProductResponseEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +18,14 @@ class ProductCard extends StatelessWidget {
       child: Container(
         width: 250,
         child: Column(children: [
-          Image.asset(fit: BoxFit.cover, 'assets/chair.jpg'),
+          Image.network(product.image),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
             child: Column(
-              children: [Text('Item name'), Text('Price')],
+              children: [
+                Text(product.title),
+                Text(product.price.toString()),
+              ],
             ),
           ),
         ]),
