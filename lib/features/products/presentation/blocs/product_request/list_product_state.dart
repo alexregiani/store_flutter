@@ -18,7 +18,6 @@ class ListProductSuccessState extends ListProductState {
   final List<ProductResponseEntity> products;
 
   ListProductSuccessState({required this.products}) {
-    print('ListProductSuccess with ${products.length} products');
   }
 
   @override

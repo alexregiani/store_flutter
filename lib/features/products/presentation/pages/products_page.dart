@@ -21,24 +21,32 @@ class ProductsPage extends StatelessWidget {
               child: Text('press to get products'),
             ),
           ),
-          Flexible(
-            flex: 1,
-            child: Center(
-              child: BlocBuilder<ListProductBloc, ListProductState>(
-                builder: (context, state) {
-                  if (state is ListProductLoadingState) {
-                    return CircularProgressIndicator();
-                  } else if (state is ListProductSuccessState) {
-                    return ListView.builder(scrollDirection: Axis.horizontal,
-                        itemCount: state.products.length,
-                        itemBuilder: (context, index) {
-                          return ProductCard(product: state.products[index]);
-                        });
-                  } else {
-                    return Text('error');
-                  }
-                },
-              ),
+          Center(
+            child: BlocBuilder<ListProductBloc, ListProductState>(
+              builder: (context, state) {
+                if (state is ListProductLoadingState) {
+                  return const CircularProgressIndicator();
+                } else if (state is ListProductSuccessState) {
+                  return Expanded(
+                    child: SizedBox(
+                      height: 400,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: state.products.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ProductCard(product: state.products[index]),
+                            );
+                          }),
+                    ),
+                  );
+                } else if (state is ListProductErrorState) {
+                  return Text(state.errorMessage);
+                } else {
+                  return Container();
+                }
+              },
             ),
           ),
         ]),

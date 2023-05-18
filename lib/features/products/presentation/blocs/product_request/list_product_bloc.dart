@@ -12,7 +12,6 @@ class ListProductBloc extends Bloc<ListProductEvent, ListProductState> {
 
   ListProductBloc({required this.listProductUseCase}) : super(ListProductInitialState()) {
     on<FetchProductEvent>((event, emit) async {
-      print('FetchProductEvent triggered');
       try {
         emit(ListProductLoadingState()); // Indicate that loading has started
         final products = await listProductUseCase.call();
