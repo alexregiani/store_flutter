@@ -22,10 +22,16 @@ class ProductCard extends StatelessWidget {
           width: 250,
           child: Column(
             children: [
-              SizedBox(
-                width: 300,
-                height: 300,
-                child: Image.network(product.image, fit: BoxFit.cover),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Container(
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
+                  width: 300,
+                  height: 300,
+                  child: Image.network(
+                    product.image,
+                  ),
+                ),
               ),
               Expanded(
                 child: Padding(
@@ -38,11 +44,20 @@ class ProductCard extends StatelessWidget {
                         Text(
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
-                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                             product.title),
                         Align(
-                            alignment: Alignment.bottomRight,
-                            child: Text(style: const TextStyle(fontSize: 16), '\$${product.price.toString()}')),
+                            alignment: Alignment.bottomLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(style: const TextStyle(fontSize: 16), '\$${product.price.toString()}'),
+                                  Icon(Icons.add_circle, size: 30),
+                                ],
+                              ),
+                            )),
                       ],
                     ),
                   ),
