@@ -35,7 +35,7 @@ class ProductsPage extends StatelessWidget {
                           itemCount: state.products.length,
                           itemBuilder: (context, index) {
                             return Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+                              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                               child: ProductCard(product: state.products[index]),
                             );
                           }),
