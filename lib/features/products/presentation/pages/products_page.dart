@@ -29,13 +29,13 @@ class ProductsPage extends StatelessWidget {
                 } else if (state is ListProductSuccessState) {
                   return Expanded(
                     child: SizedBox(
-                      height: 400,
+                      height: 420,
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: state.products.length,
                           itemBuilder: (context, index) {
                             return Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
                               child: ProductCard(product: state.products[index]),
                             );
                           }),
