@@ -24,19 +24,25 @@ class ProductsPage extends StatelessWidget {
                 return const CircularProgressIndicator();
               } else if (state is ListProductSuccessState) {
                 return SizedBox(
-                  height: 420,
+                  height: 410, // controls card and ListView.builder height
                   child: ListView.builder(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      scrollDirection: Axis.horizontal,
-                      itemCount: state.products.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ProductCard(
-                            product: state.products[index],
-                          ),
-                        );
-                      }),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: state.products.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical:
+                                12), //Padding: controls horizontal spacing between cards, vertically it prevents the card shadow from being clipped
+                        // vertically it helps not to clip shadows
+                        child: ProductCard(
+                          width: 270, //controls card width
+                          product: state.products[index],
+                        ),
+                      );
+                    },
+                  ),
                 );
               } else if (state is ListProductErrorState) {
                 return Text(state.errorMessage);
