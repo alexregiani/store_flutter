@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:store_flutter/features/products/domain/entities/product_response_entity.dart';
 
 class ProductCard extends StatelessWidget {
-  ProductCard({Key? key, required this.product, required this.width}) : super(key: key);
+  const ProductCard({Key? key, required this.product, this.width}) : super(key: key);
   final ProductResponseEntity product;
-  final double width;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {

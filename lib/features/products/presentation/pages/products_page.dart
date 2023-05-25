@@ -26,7 +26,7 @@ class ProductsPage extends StatelessWidget {
                 return SizedBox(
                   height: 410, // controls card and ListView.builder height
                   child: ListView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     scrollDirection: Axis.horizontal,
                     itemCount: state.products.length,
                     itemBuilder: (context, index) {
